@@ -1,0 +1,166 @@
+%########################################################################
+%# Copyright (c) 1988-2021 $organization$
+%#
+%# This software is provided by the author and contributors ``as is'' 
+%# and any express or implied warranties, including, but not limited to, 
+%# the implied warranties of merchantability and fitness for a particular 
+%# purpose are disclaimed. In no event shall the author or contributors 
+%# be liable for any direct, indirect, incidental, special, exemplary, 
+%# or consequential damages (including, but not limited to, procurement 
+%# of substitute goods or services; loss of use, data, or profits; or 
+%# business interruption) however caused and on any theory of liability, 
+%# whether in contract, strict liability, or tort (including negligence 
+%# or otherwise) arising in any way out of the use of this software, 
+%# even if advised of the possibility of such damage.
+%#
+%#   File: thirdparty-Makefile.t
+%#
+%# Author: $author$
+%#   Date: 12/27/2021
+%########################################################################
+%with(%
+%is_include_path,%(%else-then(%is_include_path%,%(%is_Include_path%)%)%)%,%
+%include_path,%(%else-then(%if-no(%is_include_path%,,%(%include_path%)%)%,%(%if-no(%is_include_path%,,%(%filepath(%input%)%)%)%)%)%)%,%
+%Include_path,%(%else-then(%if-no(%is_include_path%,,%(%Include_path%)%)%,%(%if-no(%is_include_path%,,%(%include_path%)%)%)%)%)%,%
+%INCLUDE_PATH,%(%else-then(%INCLUDE_PATH%,%(%toupper(%Include_path%)%)%)%)%,%
+%include_path,%(%else-then(%_include_path%,%(%tolower(%Include_path%)%)%)%)%,%
+%is_specific,%(%else-then(%is_specific%,%(%is_Specific%)%)%)%,%
+%specific,%(%else-then(%if-no(%is_specific%,,%(%specific%)%)%,%(%if-no(%is_specific%,,%(thirdparty)%)%)%)%)%,%
+%Specific,%(%else-then(%if-no(%is_specific%,,%(%Specific%)%)%,%(%if-no(%is_specific%,,%(%specific%)%)%)%)%)%,%
+%SPECIFIC,%(%else-then(%SPECIFIC%,%(%toupper(%Specific%)%)%)%)%,%
+%specific,%(%else-then(%_specific%,%(%tolower(%Specific%)%)%)%)%,%
+%is_package,%(%else-then(%is_package%,%(%is_Package%)%)%)%,%
+%package,%(%else-then(%if-no(%is_package%,,%(%package%)%)%,%(%if-no(%is_package%,,%()%)%)%)%)%,%
+%Package,%(%else-then(%if-no(%is_package%,,%(%Package%)%)%,%(%if-no(%is_package%,,%(%package%)%)%)%)%)%,%
+%PACKAGE,%(%else-then(%PACKAGE%,%(%toupper(%Package%)%)%)%)%,%
+%package,%(%else-then(%_package%,%(%tolower(%Package%)%)%)%)%,%
+%is_framework,%(%else-then(%is_framework%,%(%is_Framework%)%)%)%,%
+%framework,%(%else-then(%if-no(%is_framework%,,%(%framework%)%)%,%(%if-no(%is_framework%,,%(%else-then(%Package%,framework)%)%)%)%)%)%,%
+%Framework,%(%else-then(%if-no(%is_framework%,,%(%Framework%)%)%,%(%if-no(%is_framework%,,%(%framework%)%)%)%)%)%,%
+%FRAMEWORK,%(%else-then(%FRAMEWORK%,%(%toupper(%Framework%)%)%)%)%,%
+%framework,%(%else-then(%_framework%,%(%tolower(%Framework%)%)%)%)%,%
+%is_what,%(%else-then(%is_what%,%(%is_What%)%)%)%,%
+%what,%(%else-then(%if-no(%is_what%,,%(%what%)%)%,%(%if-no(%is_what%,,%(%Framework%)%)%)%)%)%,%
+%What,%(%else-then(%if-no(%is_what%,,%(%What%)%)%,%(%if-no(%is_what%,,%(%what%)%)%)%)%)%,%
+%WHAT,%(%else-then(%WHAT%,%(%toupper(%replace(-,_,%What%)%)%)%)%)%,%
+%what,%(%else-then(%_what%,%(%tolower(%What%)%)%)%)%,%
+%%(%
+%%include(%Include_path%/file-Makefile.t)%%
+%%with(%
+%is_name_separator,%(%else-then(%is_name_separator%,%(%is_Name_separator%)%)%)%,%
+%name_separator,%(%else-then(%if-no(%is_name_separator%,,%(%name_separator%)%)%,%(%if-no(%is_name_separator%,,%(-)%)%)%)%)%,%
+%Name_separator,%(%else-then(%if-no(%is_name_separator%,,%(%Name_separator%)%)%,%(%if-no(%is_name_separator%,,%(%name_separator%)%)%)%)%)%,%
+%NAME_SEPARATOR,%(%else-then(%NAME_SEPARATOR%,%(%toupper(%Name_separator%)%)%)%)%,%
+%name_separator,%(%else-then(%_name_separator%,%(%tolower(%Name_separator%)%)%)%)%,%
+%is_version_major,%(%else-then(%is_version_major%,%(%is_Version_major%)%)%)%,%
+%version_major,%(%else-then(%if-no(%is_version_major%,,%(%version_major%)%)%,%(%if-no(%is_version_major%,,%(1)%)%)%)%)%,%
+%Version_major,%(%else-then(%if-no(%is_version_major%,,%(%Version_major%)%)%,%(%if-no(%is_version_major%,,%(%version_major%)%)%)%)%)%,%
+%VERSION_MAJOR,%(%else-then(%VERSION_MAJOR%,%(%toupper(%Version_major%)%)%)%)%,%
+%version_major,%(%else-then(%_version_major%,%(%tolower(%Version_major%)%)%)%)%,%
+%is_version_minor,%(%else-then(%is_version_minor%,%(%is_Version_minor%)%)%)%,%
+%version_minor,%(%else-then(%if-no(%is_version_minor%,,%(%version_minor%)%)%,%(%if-no(%is_version_minor%,,%(0)%)%)%)%)%,%
+%Version_minor,%(%else-then(%if-no(%is_version_minor%,,%(%Version_minor%)%)%,%(%if-no(%is_version_minor%,,%(%version_minor%)%)%)%)%)%,%
+%VERSION_MINOR,%(%else-then(%VERSION_MINOR%,%(%toupper(%Version_minor%)%)%)%)%,%
+%version_minor,%(%else-then(%_version_minor%,%(%tolower(%Version_minor%)%)%)%)%,%
+%is_version_release,%(%else-then(%is_version_release%,%(%is_Version_release%)%)%)%,%
+%version_release,%(%else-then(%if-no(%is_version_release%,,%(%version_release%)%)%,%(%if-no(%is_version_release%,,%(0)%)%)%)%)%,%
+%Version_release,%(%else-then(%if-no(%is_version_release%,,%(%Version_release%)%)%,%(%if-no(%is_version_release%,,%(%version_release%)%)%)%)%)%,%
+%VERSION_RELEASE,%(%else-then(%VERSION_RELEASE%,%(%toupper(%Version_release%)%)%)%)%,%
+%version_release,%(%else-then(%_version_release%,%(%tolower(%Version_release%)%)%)%)%,%
+%is_version_build,%(%else-then(%is_version_build%,%(%is_Version_build%)%)%)%,%
+%version_build,%(%else-then(%if-no(%is_version_build%,,%(%version_build%)%)%,%(%if-no(%is_version_build%,,%(0)%)%)%)%)%,%
+%Version_build,%(%else-then(%if-no(%is_version_build%,,%(%Version_build%)%)%,%(%if-no(%is_version_build%,,%(%version_build%)%)%)%)%)%,%
+%VERSION_BUILD,%(%else-then(%VERSION_BUILD%,%(%toupper(%Version_build%)%)%)%)%,%
+%version_build,%(%else-then(%_version_build%,%(%tolower(%Version_build%)%)%)%)%,%
+%is_version_separator,%(%else-then(%is_version_separator%,%(%is_Version_separator%)%)%)%,%
+%version_separator,%(%else-then(%if-no(%is_version_separator%,,%(%version_separator%)%)%,%(%if-no(%is_version_separator%,,%(.)%)%)%)%)%,%
+%Version_separator,%(%else-then(%if-no(%is_version_separator%,,%(%Version_separator%)%)%,%(%if-no(%is_version_separator%,,%(%version_separator%)%)%)%)%)%,%
+%VERSION_SEPARATOR,%(%else-then(%VERSION_SEPARATOR%,%(%toupper(%Version_separator%)%)%)%)%,%
+%version_separator,%(%else-then(%_version_separator%,%(%tolower(%Version_separator%)%)%)%)%,%
+%is_version_major_separator,%(%else-then(%is_version_major_separator%,%(%is_Version_major_separator%)%)%)%,%
+%version_major_separator,%(%else-then(%if-no(%is_version_major_separator%,,%(%version_major_separator%)%)%,%(%if-no(%is_version_major_separator%,,%(%Version_separator%)%)%)%)%)%,%
+%Version_major_separator,%(%else-then(%if-no(%is_version_major_separator%,,%(%Version_major_separator%)%)%,%(%if-no(%is_version_major_separator%,,%(%version_major_separator%)%)%)%)%)%,%
+%VERSION_MAJOR_SEPARATOR,%(%else-then(%VERSION_MAJOR_SEPARATOR%,%(%toupper(%Version_major_separator%)%)%)%)%,%
+%version_major_separator,%(%else-then(%_version_major_separator%,%(%tolower(%Version_major_separator%)%)%)%)%,%
+%is_version_minor_separator,%(%else-then(%is_version_minor_separator%,%(%is_Version_minor_separator%)%)%)%,%
+%version_minor_separator,%(%else-then(%if-no(%is_version_minor_separator%,,%(%version_minor_separator%)%)%,%(%if-no(%is_version_minor_separator%,,%(%Version_major_separator%)%)%)%)%)%,%
+%Version_minor_separator,%(%else-then(%if-no(%is_version_minor_separator%,,%(%Version_minor_separator%)%)%,%(%if-no(%is_version_minor_separator%,,%(%version_minor_separator%)%)%)%)%)%,%
+%VERSION_MINOR_SEPARATOR,%(%else-then(%VERSION_MINOR_SEPARATOR%,%(%toupper(%Version_minor_separator%)%)%)%)%,%
+%version_minor_separator,%(%else-then(%_version_minor_separator%,%(%tolower(%Version_minor_separator%)%)%)%)%,%
+%is_version_release_separator,%(%else-then(%is_version_release_separator%,%(%is_Version_release_separator%)%)%)%,%
+%version_release_separator,%(%else-then(%if-no(%is_version_release_separator%,,%(%version_release_separator%)%)%,%(%if-no(%is_version_release_separator%,,%(%Version_minor_separator%)%)%)%)%)%,%
+%Version_release_separator,%(%else-then(%if-no(%is_version_release_separator%,,%(%Version_release_separator%)%)%,%(%if-no(%is_version_release_separator%,,%(%version_release_separator%)%)%)%)%)%,%
+%VERSION_RELEASE_SEPARATOR,%(%else-then(%VERSION_RELEASE_SEPARATOR%,%(%toupper(%Version_release_separator%)%)%)%)%,%
+%version_release_separator,%(%else-then(%_version_release_separator%,%(%tolower(%Version_release_separator%)%)%)%)%,%
+%is_archived,%(%else-then(%is_archived%,%(%is_Archived%)%)%)%,%
+%archived,%(%else-then(%if-no(%is_archived%,,%(%archived%)%)%,%(%if-no(%is_archived%,,%(tar)%)%)%)%)%,%
+%Archived,%(%else-then(%if-no(%is_archived%,,%(%Archived%)%)%,%(%if-no(%is_archived%,,%(%archived%)%)%)%)%)%,%
+%ARCHIVED,%(%else-then(%ARCHIVED%,%(%toupper(%Archived%)%)%)%)%,%
+%archived,%(%else-then(%_archived%,%(%tolower(%Archived%)%)%)%)%,%
+%is_compressed,%(%else-then(%is_compressed%,%(%is_Compressed%)%)%)%,%
+%compressed,%(%else-then(%if-no(%is_compressed%,,%(%compressed%)%)%,%(%if-no(%is_compressed%,,%(gz)%)%)%)%)%,%
+%Compressed,%(%else-then(%if-no(%is_compressed%,,%(%Compressed%)%)%,%(%if-no(%is_compressed%,,%(%compressed%)%)%)%)%)%,%
+%COMPRESSED,%(%else-then(%COMPRESSED%,%(%toupper(%Compressed%)%)%)%)%,%
+%compressed,%(%else-then(%_compressed%,%(%tolower(%Compressed%)%)%)%)%,%
+%is_archive_separator,%(%else-then(%is_archive_separator%,%(%is_Archive_separator%)%)%)%,%
+%archive_separator,%(%else-then(%if-no(%is_archive_separator%,,%(%archive_separator%)%)%,%(%if-no(%is_archive_separator%,,%(.)%)%)%)%)%,%
+%Archive_separator,%(%else-then(%if-no(%is_archive_separator%,,%(%Archive_separator%)%)%,%(%if-no(%is_archive_separator%,,%(%archive_separator%)%)%)%)%)%,%
+%ARCHIVE_SEPARATOR,%(%else-then(%ARCHIVE_SEPARATOR%,%(%toupper(%Archive_separator%)%)%)%)%,%
+%archive_separator,%(%else-then(%_archive_separator%,%(%tolower(%Archive_separator%)%)%)%)%,%
+%is_depends,%(%else-then(%is_depends%,%(%is_Depends%)%)%)%,%
+%depends,%(%else-then(%if-no(%is_depends%,,%(%depends%)%)%,%(%if-no(%is_depends%,,%(Depends)%)%)%)%)%,%
+%Depends,%(%else-then(%if-no(%is_depends%,,%(%Depends%)%)%,%(%if-no(%is_depends%,,%(%depends%)%)%)%)%)%,%
+%DEPENDS,%(%else-then(%DEPENDS%,%(%toupper(%replace(-,_,%Depends%)%)%)%)%)%,%
+%depends,%(%else-then(%_depends%,%(%tolower(%Depends%)%)%)%)%,%
+%is_depends_name_separator,%(%else-then(%is_depends_name_separator%,%(%is_Depends_name_separator%)%)%)%,%
+%depends_name_separator,%(%else-then(%if-no(%is_depends_name_separator%,,%(%depends_name_separator%)%)%,%(%if-no(%is_depends_name_separator%,,%(%Name_separator%)%)%)%)%)%,%
+%Depends_name_separator,%(%else-then(%if-no(%is_depends_name_separator%,,%(%Depends_name_separator%)%)%,%(%if-no(%is_depends_name_separator%,,%(%depends_name_separator%)%)%)%)%)%,%
+%DEPENDS_NAME_SEPARATOR,%(%else-then(%DEPENDS_NAME_SEPARATOR%,%(%toupper(%Depends_name_separator%)%)%)%)%,%
+%depends_name_separator,%(%else-then(%_depends_name_separator%,%(%tolower(%Depends_name_separator%)%)%)%)%,%
+%is_depends_version_separator,%(%else-then(%is_depends_version_separator%,%(%is_Depends_version_separator%)%)%)%,%
+%depends_version_separator,%(%else-then(%if-no(%is_depends_version_separator%,,%(%depends_version_separator%)%)%,%(%if-no(%is_depends_version_separator%,,%(%Version_separator%)%)%)%)%)%,%
+%Depends_version_separator,%(%else-then(%if-no(%is_depends_version_separator%,,%(%Depends_version_separator%)%)%,%(%if-no(%is_depends_version_separator%,,%(%depends_version_separator%)%)%)%)%)%,%
+%DEPENDS_VERSION_SEPARATOR,%(%else-then(%DEPENDS_VERSION_SEPARATOR%,%(%toupper(%Depends_version_separator%)%)%)%)%,%
+%depends_version_separator,%(%else-then(%_depends_version_separator%,%(%tolower(%Depends_version_separator%)%)%)%)%,%
+%is_depends_version_major,%(%else-then(%is_depends_version_major%,%(%is_Depends_version_major%)%)%)%,%
+%depends_version_major,%(%else-then(%if-no(%is_depends_version_major%,,%(%depends_version_major%)%)%,%(%if-no(%is_depends_version_major%,,%(%Version_major%)%)%)%)%)%,%
+%Depends_version_major,%(%else-then(%if-no(%is_depends_version_major%,,%(%Depends_version_major%)%)%,%(%if-no(%is_depends_version_major%,,%(%depends_version_major%)%)%)%)%)%,%
+%DEPENDS_VERSION_MAJOR,%(%else-then(%DEPENDS_VERSION_MAJOR%,%(%toupper(%Depends_version_major%)%)%)%)%,%
+%depends_version_major,%(%else-then(%_depends_version_major%,%(%tolower(%Depends_version_major%)%)%)%)%,%
+%is_depends_version_minor,%(%else-then(%is_depends_version_minor%,%(%is_Depends_version_minor%)%)%)%,%
+%depends_version_minor,%(%else-then(%if-no(%is_depends_version_minor%,,%(%depends_version_minor%)%)%,%(%if-no(%is_depends_version_minor%,,%(%Version_minor%)%)%)%)%)%,%
+%Depends_version_minor,%(%else-then(%if-no(%is_depends_version_minor%,,%(%Depends_version_minor%)%)%,%(%if-no(%is_depends_version_minor%,,%(%depends_version_minor%)%)%)%)%)%,%
+%DEPENDS_VERSION_MINOR,%(%else-then(%DEPENDS_VERSION_MINOR%,%(%toupper(%Depends_version_minor%)%)%)%)%,%
+%depends_version_minor,%(%else-then(%_depends_version_minor%,%(%tolower(%Depends_version_minor%)%)%)%)%,%
+%is_depends_version_release,%(%else-then(%is_depends_version_release%,%(%is_Depends_version_release%)%)%)%,%
+%depends_version_release,%(%else-then(%if-no(%is_depends_version_release%,,%(%depends_version_release%)%)%,%(%if-no(%is_depends_version_release%,,%(%Version_release%)%)%)%)%)%,%
+%Depends_version_release,%(%else-then(%if-no(%is_depends_version_release%,,%(%Depends_version_release%)%)%,%(%if-no(%is_depends_version_release%,,%(%depends_version_release%)%)%)%)%)%,%
+%DEPENDS_VERSION_RELEASE,%(%else-then(%DEPENDS_VERSION_RELEASE%,%(%toupper(%Depends_version_release%)%)%)%)%,%
+%depends_version_release,%(%else-then(%_depends_version_release%,%(%tolower(%Depends_version_release%)%)%)%)%,%
+%is_depends_version_build,%(%else-then(%is_depends_version_build%,%(%is_Depends_version_build%)%)%)%,%
+%depends_version_build,%(%else-then(%if-no(%is_depends_version_build%,,%(%depends_version_build%)%)%,%(%if-no(%is_depends_version_build%,,%(0)%)%)%)%)%,%
+%Depends_version_build,%(%else-then(%if-no(%is_depends_version_build%,,%(%Depends_version_build%)%)%,%(%if-no(%is_depends_version_build%,,%(%depends_version_build%)%)%)%)%)%,%
+%DEPENDS_VERSION_BUILD,%(%else-then(%DEPENDS_VERSION_BUILD%,%(%toupper(%Depends_version_build%)%)%)%)%,%
+%depends_version_build,%(%else-then(%_depends_version_build%,%(%tolower(%Depends_version_build%)%)%)%)%,%
+%is_depends_version_major_separator,%(%else-then(%is_depends_version_major_separator%,%(%is_Depends_version_major_separator%)%)%)%,%
+%depends_version_major_separator,%(%else-then(%if-no(%is_depends_version_major_separator%,,%(%depends_version_major_separator%)%)%,%(%if-no(%is_depends_version_major_separator%,,%(%Depends_version_separator%)%)%)%)%)%,%
+%Depends_version_major_separator,%(%else-then(%if-no(%is_depends_version_major_separator%,,%(%Depends_version_major_separator%)%)%,%(%if-no(%is_depends_version_major_separator%,,%(%depends_version_major_separator%)%)%)%)%)%,%
+%DEPENDS_VERSION_MAJOR_SEPARATOR,%(%else-then(%DEPENDS_VERSION_MAJOR_SEPARATOR%,%(%toupper(%Depends_version_major_separator%)%)%)%)%,%
+%depends_version_major_separator,%(%else-then(%_depends_version_major_separator%,%(%tolower(%Depends_version_major_separator%)%)%)%)%,%
+%is_depends_version_minor_separator,%(%else-then(%is_depends_version_minor_separator%,%(%is_Depends_version_minor_separator%)%)%)%,%
+%depends_version_minor_separator,%(%else-then(%if-no(%is_depends_version_minor_separator%,,%(%depends_version_minor_separator%)%)%,%(%if-no(%is_depends_version_minor_separator%,,%(%Depends_version_major_separator%)%)%)%)%)%,%
+%Depends_version_minor_separator,%(%else-then(%if-no(%is_depends_version_minor_separator%,,%(%Depends_version_minor_separator%)%)%,%(%if-no(%is_depends_version_minor_separator%,,%(%depends_version_minor_separator%)%)%)%)%)%,%
+%DEPENDS_VERSION_MINOR_SEPARATOR,%(%else-then(%DEPENDS_VERSION_MINOR_SEPARATOR%,%(%toupper(%Depends_version_minor_separator%)%)%)%)%,%
+%depends_version_minor_separator,%(%else-then(%_depends_version_minor_separator%,%(%tolower(%Depends_version_minor_separator%)%)%)%)%,%
+%is_depends_version_release_separator,%(%else-then(%is_depends_version_release_separator%,%(%is_Depends_version_release_separator%)%)%)%,%
+%depends_version_release_separator,%(%else-then(%if-no(%is_depends_version_release_separator%,,%(%depends_version_release_separator%)%)%,%(%if-no(%is_depends_version_release_separator%,,%(%Depends_version_minor_separator%)%)%)%)%)%,%
+%Depends_version_release_separator,%(%else-then(%if-no(%is_depends_version_release_separator%,,%(%Depends_version_release_separator%)%)%,%(%if-no(%is_depends_version_release_separator%,,%(%depends_version_release_separator%)%)%)%)%)%,%
+%DEPENDS_VERSION_RELEASE_SEPARATOR,%(%else-then(%DEPENDS_VERSION_RELEASE_SEPARATOR%,%(%toupper(%Depends_version_release_separator%)%)%)%)%,%
+%depends_version_release_separator,%(%else-then(%_depends_version_release_separator%,%(%tolower(%Depends_version_release_separator%)%)%)%)%,%
+%%(%
+%%if(%Depends%,%(%
+%%include(%Include_path%/thirdparty-depends-rules-Makefile.t)%%
+%)%)%%
+%%include(%Include_path%/thirdparty-rules-Makefile.t)%%
+%)%)%%
+%)%)%

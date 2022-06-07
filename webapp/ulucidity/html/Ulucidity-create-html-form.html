@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+=====================================================================
+=== Copyright (c) 1988-2022 $organization$
+===
+=== This software is provided by the author and contributors ``as is'' 
+=== and any express or implied warranties, including, but not limited to, 
+=== the implied warranties of merchantability and fitness for a particular 
+=== purpose are disclaimed. In no event shall the author or contributors 
+=== be liable for any direct, indirect, incidental, special, exemplary, 
+=== or consequential damages (including, but not limited to, procurement 
+=== of substitute goods or services; loss of use, data, or profits; or 
+=== business interruption) however caused and on any theory of liability, 
+=== whether in contract, strict liability, or tort (including negligence 
+=== or otherwise) arising in any way out of the use of this software, 
+=== even if advised of the possibility of such damage.
+===
+===   File: Ulucidity-create-html-form.html
+===
+=== Author: $author$
+===   Date: 6/7/2022
+=====================================================================
+=== Application=Ulucidity Part=create-html-form
+-->
+
+<!--
+=====================================================================
+=== form
+=====================================================================
+-->
+<form name="Form" method="POST" action="/ulucidity/templates/t/html/html.t"
+ onSubmit="return setFormSubmit(getFormValue2('FormTemplate','FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
+    <div class="form">
+
+    File: <input name="File" value=""></input>[html][.html]
+    <input type="radio" name="Extension" value="xhtml" unchecked="checked">.xhtml</input>
+    <input type="radio" name="Extension" value="html" checked="checked">.html</input>
+    <input type="radio" name="Extension" value="htm" unchecked="checked">.htm</input>
+    <input type="radio" name="Extension" value="" unchecked="">no</input>
+    <input type="checkbox" name="is_File" value="no" unchecked="checked">no</input>
+    <br/>
+
+    Template: <select name="FormTemplate">
+    <option value="/ulucidity/templates/t/html/html.t">.html file (/ulucidity/templates/t/html/html.t)</option>
+    <option value=""></option>
+    <option value="/ulucidity/templates/t/html/Application-part-html.t">Application part .html file (/ulucidity/templates/t/html/Application-part-html.t)</option>
+    <option value="/ulucidity/templates/t/html/Application-menubar-html.t">Application menubar .html file (/ulucidity/templates/t/html/Application-menubar-html.t)</option>
+    <option value="/ulucidity/templates/t/html/Application-form-html.t">Application form .html file (/ulucidity/templates/t/html/Application-form-html.t)</option>
+    <option value=""></option>
+    <option value="/ulucidity/templates/t/html/Application-page-html.t">Application page .html file (/ulucidity/templates/t/html/Application-page-html.t)</option>
+    <option value="/ulucidity/templates/t/html/Application-home-html.t">Application home .html file (/ulucidity/templates/t/html/Application-home-html.t)</option>
+    <option value="/ulucidity/templates/t/html/Application-create-html.t">Application create .html file (/ulucidity/templates/t/html/Application-create-html.t)</option>
+    <option value=""></option>
+    <option value="/ulucidity/templates/t/t/parameters.t">t parameters &nbsp;&nbsp; (/ulucidity/templates/t/t/parameters.t)</option>
+    <option value="/ulucidity/templates/t/t/functions.t">t functions &nbsp;&nbsp; (/ulucidity/templates/t/t/functions.t)</option>
+    <option value=""></option>
+    <option value="/ulucidity-cgi/cgi">cgi parameters &nbsp;&nbsp; (/ulucidity-cgi/cgi)</option>
+    <option value="/ulucidity-cgi/cgicatch">catch cgi parameters &nbsp;&nbsp; (/ulucidity-cgi/cgicatch)</option>
+    <option value=""/>
+    </select>
+    <br/>
+
+    <br/>
+    Application:<input name="Application" value=""></input>[Ulucidity]
+    <input type="checkbox" name="is_Application" value="no" unchecked="checked">no</input>
+    Page:<input name="Page" value=""></input>[Page]
+    <input type="checkbox" name="is_Page" value="no" unchecked="checked">no</input>
+    Part:<input name="Part" value=""></input>[part]
+    <input type="checkbox" name="is_Part" value="no" unchecked="checked">no</input>
+    <br/>
+
+    Do:<input name="Do" value=""></input>[]
+    <input type="checkbox" name="is_Do" value="no" unchecked="checked">no</input>
+    What:<input name="What" value=""></input>[]
+    <input type="checkbox" name="is_What" value="no" unchecked="checked">no</input>
+    Which:<input name="Which" value=""></input>[]
+    <input type="checkbox" name="is_Which" value="no" unchecked="checked">no</input>
+    Thing:<input name="Thing" value=""></input>[]
+    <input type="checkbox" name="is_Thing" value="no" unchecked="checked">no</input>
+    <br/>
+
+    <br/>
+    <b>&lt;form&nbsp;&nbsp;name=""&nbsp;&nbsp;method=""&nbsp;&nbsp;action="</b>
+    <b>/</b><input name="Action_path" value=""></input><b>/</b>
+    <b></b><input name="Action_type" value=""></input><b>/</b>
+    <b></b><input name="Action_base" value=""></input><b>.</b>
+    <b></b><input name="Action_extension" value=""></input><b></b>
+    <b>"&gt;</b>
+    <br/>
+    <b></b><input name="Inputs_label" value=""></input><b>:</b>
+    <input type="checkbox" name="is_Inputs_label" value="no" unchecked="checked">no</input>
+    <b>&lt;input&nbsp;&nbsp;name="</b><input name="Inputs" value=""></input><b>=value;..."</b>
+    <input type="checkbox" name="is_Inputs" value="no" unchecked="checked">no</input>
+    <b>&nbsp;&nbsp;value="</b><input name="InputValue" value=""></input><b>"</b>
+    <input type="checkbox" name="is_InputValue" value="no" unchecked="checked">no</input>
+    <b>&lt;/input&gt;</b>
+    <br/>
+    <b>&lt;/form&gt;</b>
+    <br/>
+
+    <br/>
+    Copyright:<input name="Genesis" size="10" value=""/>[1988]<b></b>
+    <input type="checkbox" name="is_Genesis" value="no" unchecked="checked">no</input>
+    <b>-</b><input name="Year" size="10" value=""/>[%year()%]<b></b>
+    <input type="checkbox" name="is_Year" value="no" unchecked="checked">no</input>
+    <b>&nbsp;&nbsp;</b>Organization:<input name="Organization" value=""></input>[$organization$]
+    <input type="checkbox" name="is_Organization" value="no" unchecked="checked">no</input>
+    <input type="checkbox" name="is_Copyright" value="no" unchecked="checked">no</input>
+    <br/>
+    Author:<input name="Author" value=""></input>[$author$]
+    <input type="checkbox" name="is_Author" value="no" unchecked="checked">no</input>
+    <b>&nbsp;&nbsp;</b>Date:<input name="Date" size="10" value=""/>[%date()%]<b></b>
+    <input type="checkbox" name="is_Date" value="no" unchecked="checked">no</input>
+    <b>&nbsp;&nbsp;</b><select name="Claims">
+    <option value=""></option>
+    <option value="as_is">``as is''</option>
+    <option value=""></option>
+    </select>[``as is'']
+    <input type="checkbox" name="is_Claims" value="no" unchecked="checked">no</input>
+    <br/>
+
+    <br/>
+    Content-Type: <select name="content_type">
+    <option value="text/plain">text</option>
+    <option value="text/html">html</option>
+    <option value="text/xml">xml</option>
+    <option value="application/json">json</option>
+    <option value="application/javascript">javascript</option>
+    <option value=""></option>
+    </select>
+    <br/>
+    Action: <select name="FormAction">
+    <option value="/ulucidity/templates/t/html/html.t">.html file (/ulucidity/templates/t/html/html.t)</option>
+    <option value=""></option>
+    <option value="/ulucidity/templates/t/t/parameters.t">t parameters &nbsp;&nbsp; (/ulucidity/templates/t/t/parameters.t)</option>
+    <option value="/ulucidity/templates/t/t/functions.t">t functions &nbsp;&nbsp; (/ulucidity/templates/t/t/functions.t)</option>
+    <option value=""></option>
+    <option value="/ulucidity-cgi/cgi">cgi parameters &nbsp;&nbsp; (/ulucidity-cgi/cgi)</option>
+    <option value="/ulucidity-cgi/cgicatch">catch cgi parameters &nbsp;&nbsp; (/ulucidity-cgi/cgicatch)</option>
+    <option value=""/>
+    </select>
+    <br/>
+    Method: <select name="FormMethod">
+    <option value="POST">POST</option>
+    <option value="GET">GET</option>
+    <option value=""></option>
+    </select>
+    <br/>
+    <br/>
+    <input type="submit" name="submit" value="submit"/><br/>
+    </div>
+</form>

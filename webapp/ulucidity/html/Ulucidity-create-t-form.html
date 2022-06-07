@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+=====================================================================
+=== Copyright (c) 1988-2022 $organization$
+===
+=== This software is provided by the author and contributors ``as is'' 
+=== and any express or implied warranties, including, but not limited to, 
+=== the implied warranties of merchantability and fitness for a particular 
+=== purpose are disclaimed. In no event shall the author or contributors 
+=== be liable for any direct, indirect, incidental, special, exemplary, 
+=== or consequential damages (including, but not limited to, procurement 
+=== of substitute goods or services; loss of use, data, or profits; or 
+=== business interruption) however caused and on any theory of liability, 
+=== whether in contract, strict liability, or tort (including negligence 
+=== or otherwise) arising in any way out of the use of this software, 
+=== even if advised of the possibility of such damage.
+===
+===   File: Ulucidity-create-t-form.html
+===
+=== Author: $author$
+===   Date: 6/7/2022
+=====================================================================
+=== Application=Ulucidity Part=create-t-form
+-->
+
+<!--
+=====================================================================
+=== form
+=====================================================================
+-->
+<form name="Form" method="POST" action="/ulucidity/templates/t/t/t.t"
+ onSubmit="return setFormSubmit(getFormValue2('FormTemplate','FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
+    <div class="form">
+
+    File: <input name="File" value=""></input>[t][.t]
+    <input type="radio" name="Extension" value="texta" unchecked="checked">.texta</input>
+    <input type="radio" name="Extension" value="t" checked="checked">.t</input>
+    <input type="radio" name="Extension" value="" unchecked="checked">no</input>
+    <input type="checkbox" name="is_File" value="no" unchecked="checked">no</input>
+    <br/>
+    Template: <select name="FormTemplate">
+    <option value="/ulucidity/templates/t/t/t.t">.t file (/ulucidity/templates/t/t/t.t)</option>
+    <option value="/ulucidity/templates/t/t/file-parameters-t.t">.t file parameters (/ulucidity/templates/t/t/file-parameters-t.t)</option>
+    <option value=""></option>
+    <option value="/ulucidity/templates/t/t/parameters.t">t parameters &nbsp;&nbsp; (/ulucidity/templates/t/t/parameters.t)</option>
+    <option value="/ulucidity/templates/t/t/functions.t">t functions &nbsp;&nbsp; (/ulucidity/templates/t/t/functions.t)</option>
+    <option value=""></option>
+    <option value="/vmachinae-cgi/cgi">cgi parameters &nbsp;&nbsp; (/vmachinae-cgi/cgi)</option>
+    <option value="/vmachinae-cgi/cgicatch">catch cgi parameters &nbsp;&nbsp; (/vmachinae-cgi/cgicatch)</option>
+    <option value=""/>
+    </select>
+    <br/>
+
+    <br/>
+    Include: <input name="Include" value="file-t.t"></input>
+    <input type="radio" name="Include_extension" value="texta" unchecked="checked">.texta</input>
+    <input type="radio" name="Include_extension" value="t" checked="checked">.t</input>
+    <input type="radio" name="Include_extension" value="" unchecked="checked">no</input>
+    <input type="checkbox" name="is_Include" value="no" checked="checked">no</input>
+    <br/>
+    Parameters: <input name="Parameters" value=""></input>
+    = no<input type="checkbox" name="is_No" value="no" checked="checked">no</input>
+    lower<input type="checkbox" name="is_Lower" value="no" unchecked="checked">no</input>
+    upper/lower<input type="checkbox" name="is_UpperLower" value="no" unchecked="checked">no</input>
+    <input type="checkbox" name="is_Parameters" value="no" unchecked="checked">no</input>
+    <br/>
+    Type: <select name="TypeExtension">
+    <option value=""></option>
+    <option value="texta">.texta</option>
+    <option value="t" selected="selected">.t</option>
+    <option value=""></option>
+    <option value="xslt">.xslt</option>
+    <option value="xml">.xml</option>
+    <option value=""></option>
+    <option value="html">.html</option>
+    <option value="css">.css</option>
+    <option value="js">.js</option>
+    <option value=""></option>
+    </select>
+    <input type="checkbox" name="is_TypeExtension" value="no" unchecked="checked">no</input>
+    <br/>
+
+    <br/>
+    Copyright:<input name="Genesis" size="10" value=""/>[1988]<b></b>
+    <input type="checkbox" name="is_Genesis" value="no" unchecked="checked">no</input>
+    <b>-</b><input name="Year" size="10" value=""/>[%year()%]<b></b>
+    <input type="checkbox" name="is_Year" value="no" unchecked="checked">no</input>
+    <b>&nbsp;&nbsp;</b>Organization:<input name="Organization" value=""></input>[$organization$]
+    <input type="checkbox" name="is_Organization" value="no" unchecked="checked">no</input>
+    <input type="checkbox" name="is_Copyright" value="no" unchecked="checked">no</input>
+    <br/>
+    Author:<input name="Author" value=""></input>[$author$]
+    <input type="checkbox" name="is_Author" value="no" unchecked="checked">no</input>
+    <b>&nbsp;&nbsp;</b>Date:<input name="Date" size="10" value=""/>[%date()%]<b></b>
+    <input type="checkbox" name="is_Date" value="no" unchecked="checked">no</input>
+    <b>&nbsp;&nbsp;</b><select name="Claims">
+    <option value=""></option>
+    <option value="as_is">``as is''</option>
+    <option value=""></option>
+    </select>[``as is'']
+    <input type="checkbox" name="is_Claims" value="no" unchecked="checked">no</input>
+    <br/>
+
+    <br/>
+    Content-Type: <select name="content_type">
+    <option value="text/plain">text</option>
+    <option value="text/html">html</option>
+    <option value="text/xml">xml</option>
+    <option value="application/json">json</option>
+    <option value="application/javascript">javascript</option>
+    <option value=""></option>
+    </select>
+    <br/>
+    Action: <select name="FormAction">
+    <option value="/ulucidity/templates/t/t/t.t">.t file (/ulucidity/templates/t/t/t.t)</option>
+    <option value=""></option>
+    <option value="/ulucidity/templates/t/t/parameters.t">t parameters &nbsp;&nbsp; (/ulucidity/templates/t/t/parameters.t)</option>
+    <option value="/ulucidity/templates/t/t/functions.t">t functions &nbsp;&nbsp; (/ulucidity/templates/t/t/functions.t)</option>
+    <option value=""></option>
+    <option value="/ulucidity-cgi/cgi">cgi parameters &nbsp;&nbsp; (/ulucidity-cgi/cgi)</option>
+    <option value="/ulucidity-cgi/cgicatch">catch cgi parameters &nbsp;&nbsp; (/ulucidity-cgi/cgicatch)</option>
+    <option value=""/>
+    </select>
+    <br/>
+    Method: <select name="FormMethod">
+    <option value="POST">POST</option>
+    <option value="GET">GET</option>
+    <option value=""></option>
+    </select>
+    <br/>
+    <br/>
+    <input type="submit" name="submit" value="submit"/><br/>
+    </div>
+</form>
